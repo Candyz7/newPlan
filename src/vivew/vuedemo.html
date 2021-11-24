@@ -10,6 +10,8 @@
     <div id="app"> 
         <!-- 声明变量, vue最常见的本文插值方式 -->
         {{name}}{{message}} {{key}}
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p v-html="rawHtml"></p>
     </div>
     <script type="text/JavaScript">
     // vue.js的应用对象
@@ -18,7 +20,8 @@
             data: { //注册变量
                 name: "vue,",
                 message: "hello vue!",
-                key: "is good"
+                key: "is good",
+                rawHtml: '<span style="color:red">this is should be red</span>'
             },
 
             //在实例初始化之后,data observer和事件配置之前被调用
