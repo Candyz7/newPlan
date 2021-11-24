@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎,vue!</title>
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app"> 
+        <!-- 声明变量, vue最常见的本文插值方式 -->
+        {{name}}{{message}} {{key}}
+    </div>
+    <script type="text/JavaScript">
+    // vue.js的应用对象
+        var app = new Vue({
+            el : "#app", //元素  id选择器选中上面的div
+            data: { //注册变量
+                name: "vue,",
+                message: "hello vue!",
+                key: "is good"
+            },
+
+            //在实例初始化之后,data observer和事件配置之前被调用
+            beforeCreate:function () {
+                console.log('beforeCreate', '创建前');
+            },
+
+            //data已经初始化,计算属性、event/watch事件回调,但是DOM结构并未挂载
+            created:function () {
+                console.log('created', '创建后');
+            },
+
+            //再挂载前被调用render函数数次被调用生成虚拟dom
+            beforeMount:function () {
+                console.log('beforeMount', '挂载前')
+            },
+
+            //挂载完成,dom树已经完成渲染到页面,可进行dom操作
+            mounted:function () {
+                console.log('mounted', '挂载后')
+            },
+
+            //组件更新时调用
+            beforeUpdate:function () {
+                console.log('beforeUpdate', '更新前')
+            },
+
+            //组件DOM已经更新, 组件更新完毕
+            updated:function () {
+                console.log('updated', '更新后')
+            },
+
+            //实例销毁之前调用,在这还可以访问实例的数据
+            beforeDestroy:function () {
+                console.log('beforeDestroy', '销毁前')
+            },
+
+            // 组件销毁后调用
+            destroyed:function () {
+                console.log('destroyed', '销毁后')
+            }
+
+
+
+        });
+    </script>
+</body>
+</html>
