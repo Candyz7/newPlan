@@ -8,6 +8,8 @@
       <a style="color:blue;font-sze:40px" v-show="change">33333333333333333333333333</a>
       <a style="color:blue;font-sze:40px" v-show="changes">44444444444444444444444444</a>
         <!-- <div v-for="(item, i) in list">{{item.id}} {{item.name}}</div> -->
+        <div v-text="text" style="margin-top:50px"> {{text}} </div>
+        <div v-html="html" style="margin-top:50px"> {{html}} </div>
   </div>
 </template>
 <script>
@@ -15,6 +17,8 @@ export default {
   name: 'demo',
   data () {
     return {
+      text: "<span>html标签在渲染的时候被源码输出</span>",
+      html: "<span>html标签在渲染的时候被解析</span>",
       change: false,
       changes: true,
       list: [
