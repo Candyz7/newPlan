@@ -10,6 +10,11 @@
         <!-- <div v-for="(item, i) in list">{{item.id}} {{item.name}}</div> -->
         <div v-text="text" style="margin-top:50px"> {{text}} </div>
         <div v-html="html" style="margin-top:50px"> {{html}} </div>
+
+        <div :style="{color:color, fontSize:size}">v-bind的使用</div>
+
+        <div v-bind:class="{active: isActive}"
+        style="width:200px;height:200px;text-align:center;background:pink">class与style的绑定</div>
   </div>
 </template>
 <script>
@@ -25,7 +30,10 @@ export default {
         {id: '1', name: 'aa'},
         {id: '2', name: 'bb'},
         {id: '3', name: 'cc'}
-      ]
+      ],
+      size:'50px',
+      color:'pink',
+      isActive:true
     }
   },
   mounted () {
@@ -43,5 +51,9 @@ export default {
   width: 100%;
   height: 100px;
   background-color: beige;
+}
+.active {
+  background-color: pink;
+  font-size: 20px;
 }
 </style>
