@@ -15,6 +15,19 @@
 
         <div v-bind:class="{active: isActive}"
         style="width:200px;height:200px;text-align:center;background:pink">class与style的绑定</div>
+
+
+    <Form ref="form" :model="form"  inline >
+        <FormItem >
+            <Input type="text" @on-change="inputChange()" v-model="form.user" placeholder="用户名">
+            </Input>
+        </FormItem>
+        <FormItem >
+            <Input type="password" @on-change="inputChange()" v-model="form.password" placeholder="密码">
+            </Input>
+        </FormItem>
+        <button @click="changeUser">点击事件</button>
+    </Form>
   </div>
 </template>
 <script>
@@ -33,12 +46,25 @@ export default {
       ],
       size:'50px',
       color:'pink',
-      isActive:true
+      isActive:true,
+      form: {
+          user: '原来的用户名',
+          password: ''
+      },
     }
   },
   mounted () {
+    console.log(this.form.user)
   },
   methods: {
+    inputChange() {
+      console.log('用户名',this.form.user)
+      console.log('密码',this.form.password)
+    },
+    changeUser() {
+      this.form.user = '修改后的名字'
+      console.log(this.form.user)
+    },
     ok () {
       this.change = true
       console.log('简单实现v-on的使用')
