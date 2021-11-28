@@ -28,13 +28,23 @@
         </FormItem>
         <button @click="changeUser">点击事件</button>
     </Form>
+
+    <new-table :baseInfo="baseInfo" @fromNewtable="fromNewtable">
+      <h1 slot="header">使用插槽变成更改后的</h1>
+    </new-table>
+    <next-table :message="message"></next-table>
   </div>
 </template>
 <script>
+import newTable from '@/components/newTable'
+import nextTable from '@/components/nextTable'
 export default {
   name: 'demo',
+  components: {newTable, nextTable},
   data () {
     return {
+      message: '',
+      baseInfo:'我是父组件传过来的值',
       text: "<span>html标签在渲染的时候被源码输出</span>",
       html: "<span>html标签在渲染的时候被解析</span>",
       change: false,
@@ -54,9 +64,13 @@ export default {
     }
   },
   mounted () {
-    console.log(this.form.user)
+    // console.log(this.form.user)
   },
   methods: {
+    fromNewtable(data) {
+      this.message = data
+      console.log(data)
+    },
     inputChange() {
       console.log('用户名',this.form.user)
       console.log('密码',this.form.password)
