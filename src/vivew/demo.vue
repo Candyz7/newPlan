@@ -1,13 +1,13 @@
 <template>
   <div class="demo">
-    <div class="head">
+    <!-- <div class="head">
       <button @click="ok">点击</button>
     </div>
       <a style="color:red;font-sze:20px" v-if="change">11111111111111111111111111</a>
       <a style="color:red;font-sze:20px" v-else>22222222222222222222222222</a>
       <a style="color:blue;font-sze:40px" v-show="change">33333333333333333333333333</a>
       <a style="color:blue;font-sze:40px" v-show="changes">44444444444444444444444444</a>
-        <!-- <div v-for="(item, i) in list">{{item.id}} {{item.name}}</div> -->
+        <div v-for="(item, i) in list">{{item.id}} {{item.name}}</div>
         <div v-text="text" style="margin-top:50px"> {{text}} </div>
         <div v-html="html" style="margin-top:50px"> {{html}} </div>
 
@@ -27,7 +27,7 @@
             </Input>
         </FormItem>
         <button @click="changeUser">点击事件</button>
-    </Form>
+    </Form> -->
 
     <new-table :baseInfo="baseInfo" @fromNewtable="fromNewtable">
       <h1 slot="header">使用插槽变成更改后的</h1>

@@ -1,5 +1,6 @@
 <template>
   <div class="demo">
+    {{data}}
   </div>
 </template>
 <script>
@@ -8,10 +9,16 @@ export default {
   props: ['message'],
   data () {
     return {
+      data: ''
     }
   },
   mounted () {
       console.log(this.message)
+      
+      this.$event.$on("sendMessage", data => {
+      this.data = data;
+      console.log(this.data)
+    })
   },
   methods: {
      
@@ -19,4 +26,7 @@ export default {
 }
 </script>
 <style scoped>
+.demo {
+  font-size: 20px;
+}
 </style>

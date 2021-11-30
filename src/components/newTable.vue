@@ -5,6 +5,7 @@
     <header>
         <slot name="header">原来的信息</slot>
     </header>
+    <button @click="handleClick"> Send Message</button>
   </div>
 </template>
 <script>
@@ -13,13 +14,17 @@ export default {
   props: ['baseInfo'],
   data () {
     return {
-        information: '我是兄弟组件传来的值'
+        information: '我是兄弟组件传来的值',
+        message: '给兄弟组件传的值'
     }
   },
   mounted () {
       console.log(this.baseInfo)
   },
   methods: {
+    handleClick() {
+      this.$event.$emit("sendMessage", this.message)
+    },
       goDemo() {
           this.$emit('fromNewtable',this.information)
       }
