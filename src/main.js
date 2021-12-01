@@ -7,6 +7,9 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import newTable from '@/components/newTable';
 
+import toastRegistry from '@/components/toast.js';
+Vue.use(toastRegistry);
+
 window.eventBus = new Vue();   // 注册全局事件对象
 Vue.prototype.$event = new Vue();
 
