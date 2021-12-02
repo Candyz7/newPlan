@@ -6,9 +6,16 @@ import router from './router'
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import newTable from '@/components/newTable';
+import 'vant/lib/index.css';
+import { Button, Form, Field } from 'vant';
 
+Vue.use(Button);
+Vue.use(Form);
+Vue.use(Field);
 import toastRegistry from '@/components/toast.js';
 Vue.use(toastRegistry);
+import myConfirmRegistry from '@/confirm/confirm.js';
+Vue.use(myConfirmRegistry);
 
 window.eventBus = new Vue();   // 注册全局事件对象
 Vue.prototype.$event = new Vue();

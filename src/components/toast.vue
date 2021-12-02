@@ -7,12 +7,12 @@
 <script>
 export default {
     name: 'toast',
-    // data() {
-    //     return {
-    //         show:true,
-    //         text: '弹窗内容'
-    //     }
-    // }
+     data() {
+         return {
+             show:true,
+             text: '弹窗内容'
+         }
+     }
 };
 </script>
 
@@ -20,7 +20,7 @@ export default {
 .container {
     position: fixed;
     top: calc(50% - 20px);
-    left: calc(50% - 50px);
+    left: calc(50% - 100px);
     width: 200px;
     height: 40px;
     text-align: center;
