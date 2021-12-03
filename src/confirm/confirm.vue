@@ -70,6 +70,7 @@ export default {
 .modal{
     position: fixed;
     text-align: center;
+    margin-bottom: 270px;
     width: 300px;
     height: 150px;
     background-color:#ffffff;
