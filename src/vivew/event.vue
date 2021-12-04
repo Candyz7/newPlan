@@ -1,20 +1,29 @@
 <template>
   <div>
-    <h1>使用vue.extend动态创建组件</h1>
-    <button @click="showToast">打开弹窗</button>
+    <vuexone :products="products"></vuexone>
+    <vuextwo :products="products"></vuextwo>
   </div>
 </template>
 
 <script>
-// import toast from './components/toast.vue';
+import vuexone from '@/components/vuexone'
+import vuextwo from '@/components/vuextwo'
 export default {
-    // components: {
-    //     toast
-    // },
+    components: {
+        vuexone, vuextwo
+     },
+    data() {
+        return {
+            products: [
+                {name: '快船', price: '64'},
+                {name: '湖人', price: '92'},
+                {name: '勇士', price: '78'},
+                {name: '太阳', price: '74'},
+            ]
+        }
+    },
     methods: {
-        showToast() {
-            this.$toast('弹窗内容')
-        }
+
     }
 }
 </script>

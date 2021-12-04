@@ -1,28 +1,25 @@
-import Vue from 'vue'
-import toast from './toast.vue';
+import Vue from 'vue'
+import toast from './toast.vue';
 
-const toastConst = Vue.extend(toast);
-
-function showToast(text) {
-    const toastDOM = new toastConst({
-        el: document.createElement('div'),
-        data() {
-            return {
-                text: text,
-                show: true
-            }
-        }
-    });
-
-    document.body.appendChild(toastDOM.$el)
-
-    setTimeout(() => {
-        toastDOM.show = false
-    },5000)
+function showToast(text, setime = 2000) {
+    const toastConst = Vue.extend(toast);
+    const toastDOM = new toastConst({
+        el: document.createElement('div'),
+        data() {
+            return {
+                text: text,
+                show: true
+            }
+        }
+    });
+    document.body.appendChild(toastDOM.$el)
+    setTimeout(() => {
+        toastDOM.show = false
+    }, setime)
 }
 
-function toastRegistry() {
-    Vue.prototype.$toast = showToast;
+function toastRegistry() {
+    Vue.prototype.$toast = showToast;
 }
+export default toastRegistry;
 
-export default toastRegistry;

@@ -40,18 +40,17 @@ export default {
     },
     methods: {
      onSubmit() {
-         if(this.username ==123456 & this.password == 123 ) {
-         this.$router.push({path: '/home'})
-         this.$toast('登录成功')
-
-         }else {
+        if(this.username ==123456 & this.password == 123 ) {
+            this.$router.push({path: '/home'})
+            this.$toast('登录成功')
+        }else {
             this.$myConfirm({
-             closeCallback: () => {
-             },
-             okCallback: () => {
-
-             }
-         })
+                cancelTColor: 'red',
+                closeCallback: () => {
+                },
+                okCallback: () => {
+                }
+            })
         }
     },
     register() {
