@@ -25,6 +25,7 @@
             </div>
             <van-button  color="rgb(96, 63, 154)" @click="register">注册</van-button>
             <van-button  color="rgb(96, 63, 154)" @click="ceshi">测试</van-button>
+            
         </van-form>
     </div>
   </div>
@@ -45,7 +46,6 @@ export default {
             this.$toast('登录成功')
         }else {
             this.$myConfirm({
-                cancelTColor: 'red',
                 closeCallback: () => {
                 },
                 okCallback: () => {

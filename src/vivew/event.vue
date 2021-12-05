@@ -22,6 +22,12 @@ export default {
             ]
         }
     },
+    created() {
+    console.log('注册页面组件创建了')
+    },
+    destroyed() {
+        console.log('注册页面组件销毁了')
+    },
     methods: {
 
     }

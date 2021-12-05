@@ -33,6 +33,7 @@
       <h1 slot="header">使用插槽变成更改后的</h1>
     </new-table>
     <next-table :message="message"></next-table>
+    <h2 @click="changeColor">点击变换颜色</h2>
   </div>
 </template>
 <script>
@@ -63,10 +64,19 @@ export default {
       },
     }
   },
+  created() {
+    console.log('测试页面组件创建了')
+  },
+  destroyed() {
+    console.log('测试页面组件销毁了')
+  },
   mounted () {
     // console.log(this.form.user)
   },
   methods: {
+    changeColor(e) {
+      e.target.style.color = 'red'
+    },
     fromNewtable(data) {
       this.message = data
       console.log(data)

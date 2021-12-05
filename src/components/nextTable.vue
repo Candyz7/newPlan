@@ -13,8 +13,6 @@ export default {
     }
   },
   mounted () {
-      console.log(this.message)
-      
       this.$event.$on("sendMessage", data => {
       this.data = data;
       console.log(this.data)
