@@ -2,9 +2,9 @@
   <div class="demo">
     <input v-model="information">
     <button @click="goDemo">组建通信</button>
-    <header>
-        <slot name="header">原来的信息</slot>
-    </header>
+    <div>
+        <slot name="demo-header">原来的信息</slot>
+    </div>
     <button @click="handleClick"> Send Message</button>
   </div>
 </template>

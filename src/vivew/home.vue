@@ -1,33 +1,61 @@
 <template>
   <div class="home">
       <div class="head">
-         <img id="img" class="home-img" src="../assets/hb1.png">
+        <my-head title="瓦坎达forever">
+          <div slot="left" style="font-size: 12px">欢迎:{{name}}</div>
+        </my-head>
       </div>
       <div class="content">
-         <van-button  color="rgb(96, 63, 154)" @click="goback">返回</van-button>
+         <img id="img" class="home-img" src="../assets/hb1.png">
+         <div class="home-content1">
+            <div class="home-establish">
+              <img class="home-imgLuru" src="../assets/luru.png">
+              <div>新建题目</div>
+            </div>
+            <div class="home-myestablish">
+              <img class="home-imgTiku" src="../assets/tiku.png">
+              <div>我的题库</div>
+            </div>
+        </div>
+        <div class="home-content2">
+            <div class="home-answer">
+              <img class="home-imgDati" src="../assets/dati.png">
+              <div style="margin-top:-7px">答题</div>
+            </div>
+            <div class="home-practice">
+              <img class="home-imgContact" src="../assets/luru.png">
+              <div>练习</div>
+            </div>
+        </div>
       </div>
       <div class="footer">
         <div class="left">
-            <div><van-icon name="wap-home" size="25px"/><div>主页</div></div>
+            <div><van-icon name="wap-home" color="rgb(96, 63, 154)" size="25px"/><div>主页</div></div>
         </div>
         <div class="center">
-            <van-icon name="label" size="25px"/><div>任务列表</div>
+            <van-icon name="label" color="rgb(96, 63, 154)" size="25px"/><div>任务列表</div>
         </div>
         <div class="right">
-            <div><van-icon name="manager" size="25px"/><div>我的</div></div>
+            <div><van-icon name="manager" color="rgb(96, 63, 154)" size="25px"/><div>我的</div></div>
         </div>
       </div>
  </div>
 </template>
 <script>
+import myHead from '../components/myHead.vue'
 export default {
   name: 'Home',
+  components: {myHead},
   data () {
     return {
+      name:'',
+      password:''
     }
   },
 
   mounted () {
+    this.name = this.$route.query.name
+    this.password = this.$route.query.password
   },
   methods: {
     goback() {
@@ -37,9 +65,73 @@ export default {
 }
 </script>
 <style scoped>
+.head {
+  font-size: 16px;
+  font-weight: bold;
+}
+.content{
+  height: calc(100vh - 110px);
+  position: absolute;
+  overflow: auto;
+}
 .home-img {
     width: 100%;
-    height: 240px;
+    height: 220px;
+}
+.home-content1{
+    display: flex;
+}
+.home-content2{
+    display: flex;
+}
+.home-establish{
+    flex: 1;
+    height: 140px;
+    color: rgb(96, 63, 154);
+    margin: 4px 4px 4px 8px;
+    border: 2px solid rgb(235, 235, 235);
+}
+.home-imgLuru{
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
+}
+.home-myestablish{
+    flex: 1;
+    height: 140px;
+    color: rgb(96, 63, 154);
+    margin: 4px 8px 4px 4px;
+    border: 2px solid rgb(235, 235, 235);
+}
+.home-imgTiku{
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
+}
+.home-answer{
+    flex: 1;
+    height: 140px;
+    color: rgb(96, 63, 154);
+    margin: 4px 4px 4px 8px;
+    border: 2px solid rgb(235, 235, 235);
+}
+.home-practice{
+    flex: 1;
+    height: 140px;
+    color: rgb(96, 63, 154);
+    margin: 4px 8px 4px 4px;
+    border: 2px solid rgb(235, 235, 235);
+}
+.home-imgDati{
+  width: 70px;
+  height: 70px;
+  margin-top: 20px;
+}
+.home-imgContact{
+  width: 50px;
+  height:50px;
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 .footer{
     position: fixed;

@@ -1,7 +1,7 @@
 <template>
 <div class="modal-container">
     <div class="modal">
-        <div class="header">
+        <div class="modal-header">
             <span class="title" v-html="title"></span>
         </div>
         <div class="content" v-html="content"></div>
@@ -64,7 +64,7 @@ export default {
     justify-content: center;
     align-items: center;
 }
-.header{
+.modal-header{
     font-weight: bold;
     font-size: 16px;
     margin-top:10px;

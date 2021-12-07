@@ -21,10 +21,10 @@
                 :rules="[{ required: true, message: '请填写密码' }]"
             />
             <div style="margin: 16px;">
-                <van-button round block type="info" color="rgb(96, 63, 154)" native-type="submit">提交</van-button>
+                <van-button round block type="info" color="rgb(96, 63, 154)">登录</van-button>
             </div>
-            <van-button  color="rgb(96, 63, 154)" @click="register">注册</van-button>
-            <van-button  color="rgb(96, 63, 154)" @click="ceshi">测试</van-button>
+            <span class="ceshiBtn" @click="ceshi">测试</span>
+            <span class="registerBtn" @click="register">注册</span>
             
         </van-form>
     </div>
@@ -42,7 +42,7 @@ export default {
     methods: {
      onSubmit() {
         if(this.username ==123456 & this.password == 123 ) {
-            this.$router.push({path: '/home'})
+            this.$router.push({path: '/home', query: {name: this.username, password: this.password}})
             this.$toast('登录成功')
         }else {
             this.$myConfirm({
@@ -67,5 +67,18 @@ export default {
 .login-img {
     width: 100%;
     height: 240px;
+}
+.content {
+    margin: 40px 40px 15px 40px;
+}
+/* margin-left 220px */
+.registerBtn {
+    margin-left: 190px;
+    font-weight: bold;
+    color:rgb(96, 63, 154);
+}
+.ceshiBtn {
+    font-weight: bold;
+    color:rgb(96, 63, 154);
 }
 </style>

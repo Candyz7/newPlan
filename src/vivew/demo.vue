@@ -30,7 +30,7 @@
     </Form> -->
 
     <new-table :baseInfo="baseInfo" @fromNewtable="fromNewtable">
-      <h1 slot="header">使用插槽变成更改后的</h1>
+      <h1 slot="demo-header">使用插槽变成更改后的</h1>
     </new-table>
     <next-table :message="message"></next-table>
     <h2 @click="changeColor">点击变换颜色</h2>
