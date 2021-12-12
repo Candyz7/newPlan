@@ -8,7 +8,7 @@
       <div class="content">
          <img id="img" class="home-img" src="../assets/hb1.png">
          <div class="home-content1">
-            <div class="home-establish">
+            <div class="home-establish" @click="openTopic">
               <img class="home-imgLuru" src="../assets/luru.png">
               <div>新建题目</div>
             </div>
@@ -52,15 +52,17 @@ export default {
       password:''
     }
   },
-
   mounted () {
     this.name = this.$route.query.name
     this.password = this.$route.query.password
   },
   methods: {
+    openTopic(){
+      this.$router.push({path: '/newtopic'})
+    },
     goback() {
       this.$router.go(-1)
-    }
+    },
   }
 }
 </script>

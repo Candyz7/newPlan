@@ -7,12 +7,16 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import newTable from '@/components/newTable';
 import 'vant/lib/index.css';
-import { Button, Form, Field, Icon } from 'vant';
+import { Button, Form, Field, Icon, RadioGroup, Radio, Checkbox, CheckboxGroup } from 'vant';
 
 Vue.use(Button);
 Vue.use(Form);
 Vue.use(Field);
 Vue.use(Icon);
+Vue.use(Radio);
+Vue.use(RadioGroup);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
 import toastRegistry from '@/components/toast.js';
 Vue.use(toastRegistry);
 import myConfirmRegistry from '@/confirm/confirm.js';

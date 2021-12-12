@@ -5,6 +5,9 @@ import Demo from '@/vivew/demo'
 import Event from '@/vivew/event'
 import Login from '@/vivew/login'
 import Home from '@/vivew/home'
+import Newtopic from '@/vivew/newtopic'
+import Answer from '@/vivew/answer'
+import Question from '@/vivew/question'
 
 Vue.use(Router)
 
@@ -34,6 +37,22 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    
+    {
+      path: '/newtopic',
+      name: 'Newtopic',
+      component: Newtopic
+    },
+    {
+      path: '/answer',
+      name: 'Answer',
+      component: Answer
+    },
+    {
+      path: '/question',
+      name: 'Question',
+      component: Question
     },
     {
       path: '*',
