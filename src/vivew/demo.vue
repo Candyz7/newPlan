@@ -65,15 +65,43 @@ export default {
     }
   },
   created() {
-    console.log('测试页面组件创建了')
+    // console.log('测试页面组件创建了')
   },
   destroyed() {
     console.log('测试页面组件销毁了')
   },
-  mounted () {
-    // console.log(this.form.user)
+  async mounted () {
+    Promise.all([this.openInformation(), this.openConsultation(), this.addInformation()]).then(res => {
+      console.log(44444, res)
+
+    }).catch(e => {
+      console.log(55555555, e)
+    })
   },
   methods: {
+    async openInformation() {
+      let haha = await this.openConsultation()
+      return haha
+    },
+    openConsultation() {
+      return new Promise((resolve, reject) => {
+        let add = [3,4]
+        console.log(2222, add)
+        resolve(add)
+      })
+    },
+    addInformation() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let add = [4]
+          console.log(3333, add)
+          resolve(add)
+        }, 5000)
+      })
+    },
+
+
+
     changeColor(e) {
       e.target.style.color = 'red'
     },
