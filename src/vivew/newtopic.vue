@@ -22,7 +22,7 @@
         </div>
         <div class="topic-rightKey">正确答案是：</div>
         <div class="option">
-            <van-checkbox-group v-model="result" direction="horizontal" :max="nub" :disabled="why">
+            <van-checkbox-group v-model="result" direction="horizontal" :max="maxNub" :disabled="disabled">
                 <van-checkbox name="1">A</van-checkbox>
                 <van-checkbox name="2">B</van-checkbox>
                 <van-checkbox name="3">C</van-checkbox>
@@ -47,18 +47,18 @@ export default {
         playC:'',
         playD:'',
         result: [],
-        nub:'0',
-        why:true,
+        maxNub:'0',
+        disabled:true,
     }
   },
   watch: {
       radio:function () {
         if (this.radio === '1') {
-            this.why = false
-            this.nub = 1
+            this.disabled = false
+            this.maxNub = 1
         } else if (this.radio === '2') {
-            this.why = false
-            this.nub = 4
+            this.disabled = false
+            this.maxNub = 4
         }
       this.result = []
       }
@@ -84,7 +84,7 @@ export default {
             this.$toast('答案不能少于两个')
             return
           }
-        let url = 'http://localhost:8080/practice/subject/insert'
+        let url = 'http://localhost:8081/practice/subject/insert'
         let param = {
             title: this.value,
             subjectType: this.radio,

@@ -40,21 +40,22 @@ export default {
         };
     },
     methods: {
-     onSubmit() {
-        if(this.username ==123456 & this.password == 123 ) {
-            this.$router.push({path: '/home', query: {name: this.username, password: this.password}})
-            this.$toast('登录成功')
-        }else {
-            this.$myConfirm({
-                closeCallback: () => {
-                },
-                okCallback: () => {
-                }
-            })
-        }
+    async onSubmit () {
+      let vm = this
+      let url = 'http://localhost:8081/practice/user/ListUserByname?name=' + this.username + '&password=' + this.password
+      let res = await vm.$axiosHttp.getHttp(url, {})
+      console.log(res)
+      if(res.length == 0){
+        vm.$toast('用户不存在')
+        } else if (this.username === res[0].name && this.password === res[0].password) {
+                vm.$toast('登录成功')
+                vm.$router.push({ path: '/home', query: {name: vm.username, password: vm.password} })
+            }else {
+                vm.$toast('账号或密码错误')
+            }
     },
     register() {
-        this.$router.push({path: '/event'})
+        this.$router.push({path: '/register'})
     },
     ceshi() {
         this.$router.push({path: '/demo'})

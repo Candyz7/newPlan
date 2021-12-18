@@ -35,7 +35,7 @@
         <div class="center">
             <van-icon name="label" color="rgb(96, 63, 154)" size="25px"/><div>任务列表</div>
         </div>
-        <div class="right">
+        <div class="right" @click="goMine">
             <div><van-icon name="manager" color="rgb(96, 63, 154)" size="25px"/><div>我的</div></div>
         </div>
       </div>
@@ -63,6 +63,10 @@ export default {
     goback() {
       this.$router.go(-1)
     },
+    goMine() {
+      let vm = this
+      this.$router.push({path: '/mine', query: {name: vm.name, password: vm.password}})
+    }
   }
 }
 </script>
