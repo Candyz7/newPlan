@@ -10,6 +10,7 @@ import Answer from '@/vivew/answer'
 import Question from '@/vivew/question'
 import MyInfo from '@/vivew/myInfo'
 import Mine from '@/vivew/mine'
+import Details from '@/vivew/details'
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ export default new Router({
       path: '/myInfo',
       name: 'MyInfo',
       component: MyInfo
+    },
+    {
+      path: '/details',
+      name: 'Details',
+      component: Details
     },
     {
       path: '*',

@@ -12,7 +12,7 @@
               <img class="home-imgLuru" src="../assets/luru.png">
               <div>新建题目</div>
             </div>
-            <div class="home-myestablish">
+            <div class="home-myestablish" @click="openQuestion">
               <img class="home-imgTiku" src="../assets/tiku.png">
               <div>我的题库</div>
             </div>
@@ -59,6 +59,10 @@ export default {
   methods: {
     openTopic(){
       this.$router.push({path: '/newtopic'})
+    },
+    openQuestion() {
+      this.$router.push({path: '/question'})
+
     },
     goback() {
       this.$router.go(-1)
