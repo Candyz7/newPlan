@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="home-content2">
-            <div class="home-answer">
+            <div class="home-answer" @click="openAnswer">
               <img class="home-imgDati" src="../assets/dati.png">
               <div style="margin-top:-7px">答题</div>
             </div>
@@ -62,7 +62,9 @@ export default {
     },
     openQuestion() {
       this.$router.push({path: '/question'})
-
+    },
+    openAnswer() {
+      this.$router.push({path: '/answer'})
     },
     goback() {
       this.$router.go(-1)
