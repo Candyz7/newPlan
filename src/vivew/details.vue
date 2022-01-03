@@ -21,6 +21,7 @@
              . {{item.answerDesc}}</div>
         </div>
         <div class="details-true">正确答案：<span>{{ answer}}</span></div>
+        <button @click="edit">编辑</button>
     </div>
   </div>
 </template>
@@ -70,6 +71,10 @@ export default {
         }
         this.answer = this.answer + rightseq
       }
+    },
+    edit(){
+      let vm = this
+      this.$router.push({path:'/editInfo', query:{data:vm.listData}})
     }
   }
 }
