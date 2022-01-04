@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     openTopic(){
-      this.$router.push({path: '/newtopic'})
+      this.$router.push({path: '/newtopic', query: {type: "新增题目"}})
     },
     openQuestion() {
       this.$router.push({path: '/question'})

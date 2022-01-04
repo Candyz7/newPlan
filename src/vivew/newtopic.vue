@@ -1,17 +1,17 @@
 <template>
   <div class="newtopic">
-    <myHead title="新建题目"></myHead>
+    <myHead :title=type></myHead>
     <div class="content">
         <div class="topic-type">题型:</div>
         <div class="option">
-            <van-radio-group v-model="radio" direction="horizontal">
+            <van-radio-group v-model="radio" direction="horizontal" :disabled="change">
                 <van-radio name="1">单选题</van-radio>
                 <van-radio name="2">多选题</van-radio>
             </van-radio-group>
         </div>
         <div class="topic-title">题目:</div>
         <div class="test">
-            <van-field v-model="value" placeholder="请输入题目内容" />
+            <van-field v-model="value" placeholder="请输入题目内容" :disabled="change"/>
         </div>
         <div class="topic-key">答案选项：</div>
         <div>
@@ -48,7 +48,9 @@ export default {
         playD:'',
         result: [],
         maxNub:'0',
+        type:'新增题目',
         disabled:true,
+        change:false
     }
   },
   watch: {
@@ -60,7 +62,10 @@ export default {
             this.disabled = false
             this.maxNub = 4
         }
-      this.result = []
+        if(this.type == "编辑题目") {
+            return
+        }
+        this.result = []
       }
   },
   computed: {
@@ -70,58 +75,122 @@ export default {
 
   },
   mounted () {
+        this.type = this.$route.query.type
+        if(this.type == "编辑题目") {
+            this.change = true
+            let listData = this.$route.query.data
+            console.log(listData)
+            this.playA = listData.answers[0].answerDesc
+            this.playB = listData.answers[1].answerDesc
+            this.playC = listData.answers[2].answerDesc
+            this.playD = listData.answers[3].answerDesc
+            this.radio = listData.subjectType
+            this.value = listData.title
+            this.result = []
+            for(let i=0; i<listData.answers.length; i++) {
+                if(listData.answers[i].rightAnswer == 1) {
+                    let result = listData.answers[i].seq
+                     this.result.push(result.toString())
+                    console.log(this.result)
+                }
+            }
+        }
+        
   },
   methods: {
       async gohome() {
-        let answer = []
-        answer.push(this.playA, this.playB, this.playC, this.playD)
-        let answers = [...new Set(answer)]
-        if(answer.length !== answers.length) {
-            this.$toast('答案不能重复')
-            return
-        } 
-        if(this.radio === '2' && this.result.length < 2 ) {
-            this.$toast('答案不能少于两个')
-            return
-          }
-        let url = 'http://localhost:8081/practice/subject/insert'
-        let param = {
-            title: this.value,
-            subjectType: this.radio,
-            answers: [
-                {
-                    seq: '1',
-                    answerDesc: this.playA,
-                    rightAnswer: 0
-                },
-                {
-                    seq: '2',
-                    answerDesc: this.playB,
-                    rightAnswer: 0
-                },
-                {
-                    seq: '3',
-                    answerDesc: this.playC,
-                    rightAnswer: 0
-                },
-                {
-                    seq: '4',
-                    answerDesc: this.playD,
-                    rightAnswer: 0
+          if(this.type == "新增题目"){
+            let answer = []
+            answer.push(this.playA, this.playB, this.playC, this.playD)
+            let answers = [...new Set(answer)]
+            if(answer.length !== answers.length) {
+                this.$toast('答案不能重复')
+                return
+            } 
+            if(this.radio === '2' && this.result.length < 2 ) {
+                this.$toast('答案不能少于两个')
+                return
+            }
+            let url = 'http://localhost:8081/practice/subject/insert'
+            let param = {
+                title: this.value,
+                subjectType: this.radio,
+                answers: [
+                    {
+                        seq: '1',
+                        answerDesc: this.playA,
+                        rightAnswer: 0
+                    },
+                    {
+                        seq: '2',
+                        answerDesc: this.playB,
+                        rightAnswer: 0
+                    },
+                    {
+                        seq: '3',
+                        answerDesc: this.playC,
+                        rightAnswer: 0
+                    },
+                    {
+                        seq: '4',
+                        answerDesc: this.playD,
+                        rightAnswer: 0
+                    }
+                ]
+            }
+            for (var i = 0; i < param.answers.length; i++) {
+                let index = this.result.findIndex((item) => {
+                    return item === param.answers[i].seq
+                })
+                if (index > -1) {
+                param.answers[i].rightAnswer = 1
                 }
-            ]
-        }
-        for (var i = 0; i < param.answers.length; i++) {
-            let index = this.result.findIndex((item) => {
-                return item === param.answers[i].seq
-            })
-        if (index > -1) {
-          param.answers[i].rightAnswer = 1
+            }
+            let subject = await this.$axiosHttp.postHttp(url, param)
+            this.$toast(subject.message)
+            this.$router.go(-1)
+
+          }else {
+              let url = 'http://localhost:8081/practice/subject/update'
+              let param = {
+                title: this.value,
+                subjectType: this.radio,
+                answers: [
+                    {
+                        seq: '1',
+                        answerDesc: this.playA,
+                        rightAnswer: 0
+                    },
+                    {
+                        seq: '2',
+                        answerDesc: this.playB,
+                        rightAnswer: 0
+                    },
+                    {
+                        seq: '3',
+                        answerDesc: this.playC,
+                        rightAnswer: 0
+                    },
+                    {
+                        seq: '4',
+                        answerDesc: this.playD,
+                        rightAnswer: 0
+                    }
+                ]
+            }
+            for (var i = 0; i < param.answers.length; i++) {
+                let index = this.result.findIndex((item) => {
+                    return item === param.answers[i].seq
+                })
+                if (index > -1) {
+                param.answers[i].rightAnswer = 1
+                }
+            }
+            let chioes = await this.$axiosHttp.postHttp(url, param)
+            this.$toast(chioes.message)
+            this.$router.go(-1)
           }
-        }
-      let subject = await this.$axiosHttp.postHttp(url, param)
-      this.$toast(subject.message)
-          this.$router.go(-1)
+        //////////////////////
       }
   }
 }

@@ -74,7 +74,7 @@ export default {
     },
     edit(){
       let vm = this
-      this.$router.push({path:'/editInfo', query:{data:vm.listData}})
+      this.$router.push({path:'/newtopic', query:{data:vm.listData, type:"编辑题目"}})
     }
   }
 }
