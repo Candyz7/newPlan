@@ -35,6 +35,7 @@
 </template>
 <script>
 import myHead from '../components/myHead.vue'
+import { newtopic } from '@/api/common'
 export default {
   components: { myHead },
   name: 'newtopic',
@@ -146,8 +147,9 @@ export default {
                 param.answers[i].rightAnswer = 1
                 }
             }
-            let subject = await this.$axiosHttp.postHttp(url, param)
-            this.$toast(subject.message)
+            let res = await newtopic(param)
+            console.log('新增',res)
+            this.$toast(res.message)
             this.$router.go(-1)
 
           }else {

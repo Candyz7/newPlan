@@ -26,6 +26,9 @@ export default {
   mounted () {
   },
   methods: {
+    getdata() {
+      console.log(1111)
+    },
     goback () {
       this.$router.go(-1)
     }

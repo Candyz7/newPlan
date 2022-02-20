@@ -1,11 +1,11 @@
 <template>
   <div class="myInfo">
-    <my-head title="我的信息"></my-head>
+    <my-head title="我的信息" ref="tate"></my-head>
       <div class="myInfo-content">
         <div class="myInfo-first">
           <img class="myInfo-img" src="../assets/tx.png">
         </div>
-        <div class="myInfo-next">
+        <div class="myInfo-next" ref="nafff">
           <van-cell-group>
           <van-cell title="姓名" :value="name" />
           <van-cell title="电话" :value="password" />
@@ -28,6 +28,9 @@ export default {
   mounted () {
     this.name = this.$route.query.name
     this.password = this.$route.query.password
+    this.$refs.tate.getdata()
+    console.log(this.$refs)
+    console.log(this.$refs.tate)
   },
   methods: {
     upPage () {

@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { login } from '@/api/common'
 export default {
     data() {
         return {
@@ -43,8 +44,8 @@ export default {
     async onSubmit () {
       let vm = this
       let url = 'http://localhost:8081/practice/user/ListUserByname?name=' + this.username + '&password=' + this.password
-      let res = await vm.$axiosHttp.getHttp(url, {})
-      console.log(res)
+      let res = await login(url) // res即为response.data
+      console.log(333, res)
       if(res.length == 0){
         vm.$toast('用户不存在')
         } else if (this.username === res[0].name && this.password === res[0].password) {

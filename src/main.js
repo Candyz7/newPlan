@@ -76,6 +76,13 @@ Vue.config.productionTip = false
 Vue.use(ViewUI);
 Vue.use(newTable);
 
+//自定义指令 聚焦
+Vue.directive('focus', {
+  inserted: function (el) {
+      el.focus();//聚焦
+  }
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
