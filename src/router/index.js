@@ -9,6 +9,7 @@ import Newtopic from '@/vivew/newtopic'
 import Answer from '@/vivew/answer'
 import Question from '@/vivew/question'
 import MyInfo from '@/vivew/myInfo'
+import Modify from '@/vivew/modify'
 import Mine from '@/vivew/mine'
 import Details from '@/vivew/details'
 import EditInfo from '@/vivew/editInfo'
@@ -67,6 +68,11 @@ export default new Router({
       path: '/myInfo',
       name: 'MyInfo',
       component: MyInfo
+    },
+    {
+      path: '/modify',  
+      name: 'Modify',
+      component: Modify
     },
     {
       path: '/details',
