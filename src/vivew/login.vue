@@ -1,7 +1,12 @@
 <template>
   <div class="login">
     <div class="head">
-    <img id="img" class="login-img" src="../assets/bj.png">
+        <div class="head-auto">
+            <img  src="../assets/bj.png" style="width:100vw; height:240px;">
+            <img  src="../assets/hb1.png" style="width:100vw; height:240px;">
+            <img  src="../assets/hb2.png" style="width:100vw; height:240px;">
+            <img  src="../assets/hb3.png" style="width:100vw; height:240px;">
+        </div>
     </div>
     <div class="content">
         <van-form @submit="onSubmit">
@@ -82,5 +87,34 @@ export default {
 .ceshiBtn {
     font-weight: bold;
     color:rgb(96, 63, 154);
+}
+
+
+.head {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.head img {
+    float: left;
+}
+
+.head-auto {
+    width: fit-content;
+    height: 240px;
+    display: flex;
+    animation: 10.5s marginLeft infinite;
+}
+
+@keyframes marginLeft {
+    0%{}
+    25%{transform: translateX(0px)}
+    30%{transform: translateX(-100vw)}
+    50%{transform: translateX(-100vw)}
+    55%{transform: translateX(-200vw)}
+    75%{transform: translateX(-200vw)}
+    80%{transform: translateX(-300vw)}
+    100%{transform: translateX(-300vw)}
 }
 </style>

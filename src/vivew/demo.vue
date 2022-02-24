@@ -34,6 +34,16 @@
     </new-table>
     <next-table :message="message"></next-table>
     <h2 @click="changeColor">点击变换颜色</h2>
+    <input v-focus>
+    <h2>{{msg | changeMsg}}</h2>
+    <button v-preventReClick >不能连续点击</button>
+    <div class="slide">
+      <ul class="slide-auto">
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -44,6 +54,7 @@ export default {
   components: {newTable, nextTable},
   data () {
     return {
+      msg:'我的本来是新增的',
       message: '',
       baseInfo:'我是父组件传过来的值',
       text: "<span>html标签在渲染的时候被源码输出</span>",
@@ -133,5 +144,79 @@ export default {
 .active {
   background-color: pink;
   font-size: 20px;
+}
+
+.slide {
+    position: relative;
+    margin: auto;
+    width: 600px;
+    height: 200px;
+    text-align: center;
+    font-family: Arial;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.slide ul {
+    margin: 10px 0;
+    padding: 0;
+    width: 9999px;
+    transition: all 0.5s;
+}
+
+/*//自动播放*/
+.slide .slide-auto {
+    animation: marginLeft 10.5s infinite;
+}
+
+.slide li {
+    float: left;
+    width: 600px;
+    height: 200px;
+    list-style: none;
+    line-height: 200px;
+    font-size: 36px;
+}
+
+.slide li:nth-child(1) {
+    background: #9fa8ef;
+}
+
+.slide li:nth-child(2) {
+    background: #ef9fb1;
+}
+
+.slide li:nth-child(3) {
+    background: #9fefc3;
+}
+
+@keyframes marginLeft {
+    0% {
+        margin-left: 0;
+    }
+
+    28.5% {
+        margin-left: 0;
+    }
+
+    33.3% {
+        margin-left: -600px;
+    }
+
+    62% {
+        margin-left: -600px;
+    }
+
+    66.7% {
+        margin-left: -1200px;
+    }
+
+    95.2% {
+        margin-left: -1200px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
 }
 </style>

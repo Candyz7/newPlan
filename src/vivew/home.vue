@@ -2,7 +2,7 @@
   <div class="home">
       <div class="head">
         <my-head title="瓦坎达forever">
-          <div slot="left" style="font-size: 12px">欢迎:{{name}}</div>
+          <div slot="left" style="font-size: 12px">欢迎:{{name | dear}}</div>
         </my-head>
       </div>
       <div class="content">
@@ -50,6 +50,11 @@ export default {
     return {
       name:'',
       password:''
+    }
+  },
+  filters: {
+    dear: function (value) {
+      return `尊敬的${value}`
     }
   },
   mounted () {

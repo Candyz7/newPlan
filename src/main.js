@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import http from './common'
+import './utils/filters'
+import './utils/directives'
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import newTable from '@/components/newTable';
@@ -75,25 +77,6 @@ Vue.prototype.$event = new Vue();
 Vue.config.productionTip = false
 Vue.use(ViewUI);
 Vue.use(newTable);
-
-//自定义指令
-Vue.directive('focus', {
-  inserted: function (el) {
-      el.focus();//聚焦
-  }
-});
-Vue.directive('preventReClick', {
-  inserted (el, binding) {
-    el.addEventListener('click', () => {
-      if (!el.disabled) {
-        el.disabled = true
-        setTimeout(() => {
-          el.disabled = false
-        }, binding.value || 2000)
-      }
-    })
-  },
-})
 
 /* eslint-disable no-new */
 new Vue({
