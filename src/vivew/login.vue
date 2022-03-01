@@ -25,6 +25,18 @@
                 placeholder="密码"
                 :rules="[{ required: true, message: '请填写密码' }]"
             />
+            <van-cell-group v-if="mation">
+            <van-field
+                v-model="code"
+                clearable
+                label="验证码"
+                placeholder="请输入验证码"
+            >
+                <template #button>
+                <van-button size="small" type="primary" color="rgb(96, 63, 154)" @click="sendCode">发送验证码</van-button>
+                </template>
+            </van-field>
+            </van-cell-group>
             <div style="margin: 16px;">
                 <van-button round block type="info" color="rgb(96, 63, 154)">登录</van-button>
             </div>
@@ -43,22 +55,33 @@ export default {
         return {
         username: '',
         password: '',
+        code:'',
+        mation:false,
         };
     },
     methods: {
+
+    sendCode() {
+        this.$toast('您的验证码是:4410')
+    },
+
     async onSubmit () {
       let vm = this
       let url = 'http://localhost:8081/practice/user/ListUserByname?name=' + this.username + '&password=' + this.password
       let res = await login(url) // res即为response.data
       console.log(333, res)
+      if(res.length > 0) {
+          this.mation = true
+      } 
       if(res.length == 0){
-        vm.$toast('用户不存在')
-        } else if (this.username === res[0].name && this.password === res[0].password) {
-                vm.$toast('登录成功')
-                vm.$router.push({ path: '/home', query: {name: vm.username, password: vm.password} })
-            }else {
-                vm.$toast('账号或密码错误')
-            }
+            vm.$toast('用户不存在')
+            } else if (this.username === res[0].name && this.password === res[0].password && this.code === '4410' ) {
+                    vm.$toast('登录成功')
+                    vm.$router.push({ path: '/home', query: {name: vm.username, password: vm.password} })
+                }
+                else {
+                    // vm.$toast('账号或密码错误')
+                }
     },
     register() {
         this.$router.push({path: '/register'})
@@ -88,7 +111,6 @@ export default {
     font-weight: bold;
     color:rgb(96, 63, 154);
 }
-
 
 .head {
     width: 100%;

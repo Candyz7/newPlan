@@ -1,14 +1,14 @@
 <template>
   <div class="home">
       <div class="head">
-        <my-head title="瓦坎达forever">
+        <my-head title="掌上题库">
           <div slot="left" style="font-size: 12px">欢迎:{{name | dear}}</div>
         </my-head>
       </div>
       <div class="content">
          <img id="img" class="home-img" src="../assets/hb1.png">
          <div class="home-content1">
-            <div class="home-establish" @click="openTopic">
+            <div class="home-establish" @click="openTopic" v-show="admin">
               <img class="home-imgLuru" src="../assets/luru.png">
               <div>新建题目</div>
             </div>
@@ -49,7 +49,8 @@ export default {
   data () {
     return {
       name:'',
-      password:''
+      password:'',
+      admin:false
     }
   },
   filters: {
@@ -60,8 +61,15 @@ export default {
   mounted () {
     this.name = this.$route.query.name
     this.password = this.$route.query.password
+    this.sendAdmin()
   },
   methods: {
+    sendAdmin() {
+      if(this.name === 'zhusiwei') {
+      console.log(1111111)
+      this.admin = true
+    }
+    },
     openTopic(){
       this.$router.push({path: '/newtopic', query: {type: "新增题目"}})
     },
